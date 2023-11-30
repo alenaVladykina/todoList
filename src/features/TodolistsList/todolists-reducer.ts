@@ -85,6 +85,20 @@ export const changeTodolistTitleTC = (id: string, title: string) => {
             })
     }
 }
+export const authMe = () => {
+    return (dispatch: ThunkDispatch) => {
+        dispatch(setAppStatusAC('loading'))
+        todolistsAPI.getTodolists()
+          .then((res) => {
+              dispatch(setTodolistsAC(res.data))
+              dispatch(setAppStatusAC('succeeded'))
+          }).catch(error => {
+            handleServerNetworkError(error, dispatch)
+        })
+    }
+}
+
+
 
 // types
 export type AddTodolistActionType = ReturnType<typeof addTodolistAC>;

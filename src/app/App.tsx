@@ -1,23 +1,26 @@
 import React from 'react'
 import './App.css'
-import {TodolistsList} from '../features/TodolistsList/TodolistsList'
 import Container from '@mui/material/Container';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {HashRouter, Route, Routes} from "react-router-dom";
+import {TodolistsList} from "../features/TodolistsList/TodolistsList";
+
 
 function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Container fixed>
           <Routes>
             <Route path="/" element={<TodolistsList/>}/>
-            <Route path="/about" element={<h1>404: PAGE NOT FOUND</h1>}/>
+            <Route path="*" element={<h1>404: PAGE NOT FOUND</h1>}/>
           </Routes>
         </Container>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   )
 }
 
 export default App
+
+
